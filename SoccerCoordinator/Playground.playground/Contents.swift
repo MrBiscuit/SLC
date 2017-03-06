@@ -98,8 +98,9 @@ func averageHeight(forTeam team: Team) -> Int {
 /**!
  Prints letter to parents of a specified team
  */
-func letter(for team: Team) {
+func letter(for team: Team) -> [String] {
     
+    var output = [String]()
     var practiceTime = ""
     switch team["name"] as! String {
     case "teamSharks":
@@ -119,20 +120,25 @@ func letter(for team: Team) {
                 if let guardian = player["guardian"],
                     let playerName = player["name"],
                     let teamName = team["name"] {
-                    print("Greetings \(guardian), \n" +
+                    output += ["Greetings \(guardian), \n" +
                         "\(playerName) is placed into \(teamName) in the up coming Soccer League Game, \n" +
-                        "average player height for team: \(averageHeight(forTeam: team)) \n" +
+                        "average player height for team: \(averageHeight(forTeam: team)) inch\n" +
                         "Be sure to come for team practice at \(practiceTime)\n" +
-                        "-Soccer League Coordinator\n")
+                        "-Soccer League Coordinator\n"]
                 }
             }
         }
     }
+    return output
 }
 
 
 // A letter for guardians of players in each team
-for team in teams {
-    letter(for: team)
-    print("---\n")
+let lettersForTeamDragons = letter(for: teamDragons)
+let lettersForTeamSharks = letter(for: teamSharks)
+let lettersForTeamRaptors = letter(for: teamRaptors)
+
+for letter in lettersForTeamDragons + lettersForTeamSharks + lettersForTeamRaptors {
+    
+    print(letter)
 }
