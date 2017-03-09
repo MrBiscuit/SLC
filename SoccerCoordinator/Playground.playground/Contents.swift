@@ -133,12 +133,15 @@ func letter(for team: Team) -> [String] {
 }
 
 
-// A letter for guardians of players in each team
+// Letters for guardians of players in each team
 let lettersForTeamDragons = letter(for: teamDragons)
 let lettersForTeamSharks = letter(for: teamSharks)
 let lettersForTeamRaptors = letter(for: teamRaptors)
 
-for letter in lettersForTeamDragons + lettersForTeamSharks + lettersForTeamRaptors {
+let letters = lettersForTeamRaptors + lettersForTeamSharks + lettersForTeamDragons
+
+// Print all letters
+for letter in letters {
     
     print(letter)
 }
